@@ -28,11 +28,12 @@ LINKS TO DIGIZIGN WPE IMAGES:
 * Coming real real soon!
 
 ### Roadmap ### 
-[O] New Instagram/Facebook Graph API Integration
-[O] Additional admin tools for Slideshow control
-[O] Additional Streaming Services
-[O] Shared/Individual Client State Control
-[O] Named Clients
+- [X] YouTube LiveStream
+- [ ] New Instagram/Facebook Graph API Integration
+- [ ] Additional admin tools for Slideshow control
+- [ ] Additional Streaming Services
+- [ ] Shared/Individual Client State Control
+- [ ] Named Clients
 
 ### Known Bugs ###
 * When setting up a youtube livestream, clients will begin to refresh the page indefinitely unless a "reload all clients" command is sent from the admin page
