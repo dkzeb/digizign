@@ -29,6 +29,7 @@ LINKS TO DIGIZIGN WPE IMAGES:
 
 ### Roadmap ### 
 - [ ] Provide online documentation
+- [ ] Tests... so many tests
 - [ ] New Instagram/Facebook Graph API Integration
 - [ ] Additional admin tools for Slideshow control
 - [ ] Additional Streaming Services
