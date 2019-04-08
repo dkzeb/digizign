@@ -1,0 +1,11 @@
+<div id="announcement" [@bounceInUpOnEnter] *ngIf="showAnnouncement">    
+    <div id="announcement-content">        
+        <div id="announcement-title">
+            <h2>{{ announcementTitle }}</h2>            
+        </div>
+        <hr>
+        <div id="announcement-text" [innerHTML]="announcementHTML | safeHtml">                
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

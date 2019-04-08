@@ -1,0 +1,63 @@
+<div class="header">
+  <div class="brand-logo">
+    <img src="/assets/images/AUHack_logo.png" class="brand-logo-image">
+  </div>
+  <div class="maintitle">
+    {{ eventTitle }}
+  </div>
+  <div class="filler"></div>
+</div>
+<div class="mainscreen">
+
+  <div class="twitter-display-case" *ngIf="tweets.length > 0">        
+    <!--
+    <img src="{{ activeTweet.user.profile_image_url }}" style="width: 10%; height: auto;" class="tw">      
+
+    <div class="twitter-title">      
+
+      <div class="twitter-title-text">
+        <p><b>{{ activeTweet.user.name }}</b> <span class="twitter-screen-name">@{{ activeTweet.user.screen_name }}</span></p>
+      </div>
+    </div>
+    
+    <hr class="twitter-split-line">
+    
+    <p class="twitter-text">{{ activeTweet.full_text }}</p>
+    -->
+
+    <div class="twitter-logo">
+      <fa-icon [icon]="['fab', 'twitter']"></fa-icon>
+    </div>
+    
+    <div class="twitter-display-title">
+      <img src="{{ activeTweet.user.profile_image_url }}" 
+      onerror="this.onerror=null;this.src='https://image.flaticon.com/icons/svg/21/21104.svg';"
+      style="width: 100px; height: 100px;" class="tw" alt="Twitter Profile Img">      
+      <p> &nbsp; <b>{{ activeTweet.user.name }}</b> <span class="twitter-screen-name">&nbsp; @{{ activeTweet.user.screen_name }}</span></p>
+    </div>
+    <hr class="twitter-divider">
+    <div class="twitter-display-text">
+      <p>{{ activeTweet.full_text }}</p>
+    </div>
+
+    <div class="twitter-stats">
+      <fa-icon [icon]="['fas', 'retweet']"></fa-icon> {{ activeTweet.retweet_count }}
+      <fa-icon style="color: red;" [icon]="['fas', 'heart']"></fa-icon> {{ activeTweet.favorite_count }}
+      
+    </div>
+
+  </div>
+
+</div>
+<div class="footer">
+  <div class="tags-container">
+    <div class="tags">
+      <div *ngFor="let t of tags" class="tag">
+        <img src="{{ t.image }}" class="tag-image"> {{ t.tagText }}
+      </div>
+    </div>
+  </div>
+  <div class="clock">
+    {{ currentTime }}
+  </div>
+</div>

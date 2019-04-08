@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DigiZign Administration</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sortable/0.8.0/css/sortable-theme-bootstrap.min.css" integrity="sha256-S9t86HqhPL8nNR85dIjDQCJMPd9RULmRAub6xBksk9M=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" integrity="sha256-e47xOkXs1JXFbjjpoRr1/LhVcqSzRmGmPqsrUQeVs+g=" crossorigin="anonymous" />        
+</head>
+<body>
+    <div class="container"><br>
+        <div class="row">
+            <div class="col-sm">
+                <h2>DigiZign Administration</h2>
+                <br><br>
+            </div>
+        </div>
+        <div class="row">
+            <!-- client management -->
+            <div class="col-sm">
+                <h4>Client Management</h4><br>          
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">
+                                <h5>Location</h5>
+                        </div>
+                    <select id="locationSelect" class="form-control form-control-lg" onchange="sendLocation()">
+                            <option value="live">Social Media Live Screen</option>
+                            <option value="slides">Slideshow</option>
+                        </select><br>
+                        <a href="#" class="card-link" onclick="sendReload()">Reload All Clients</a>
+                        <a href="#" class="card-link" data-toggle="modal" data-target="#announcementModal">Make Announcement</a>
+                    </div>
+                </div>                
+                <br><br>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h5>YouTube LiveStream</h5>
+                        </div>
+                        <label for="ytLiveStreamUrl">
+                                YouTube LiveStream Channel ID
+                            </label>
+                            <input class="form-control" type="text" id="ytLiveStreamUrl" placeholder="e.g. UCy0WfucUvntyN0s5za-Kd9A">
+                            <a class="small" href="#">How to get a channel ID?</a><br><br>
+                            <button class="btn btn-primary" onclick="launchStream()">Launch Stream</button>
+                    </div>
+
+                </div>                
+            </div>              
+            <!-- status -->
+            <div class="col-sm">                    
+                <h4 style="display: inline-block">Clients Connected</h4> <button style="float: right; clear:both;" class="btn btn-sm btn-primary">Refresh</button>
+                <br><hr>                
+                <ul class="list-group" id="clients">                    
+                </ul>
+            </div>
+            
+
+            <!-- slides management -->
+            <div class="col-sm">
+                <h4 style="display: inline-block;">Slides</h4><button style="float: right; clear:both;" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#uploadModal">Upload Slides</button>
+                <hr>
+                <p class="small">Drag and drop the order of slides to change viewing order</p>
+                <ul class="list-group" id="slides" data-sortable>                        
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal" id="uploadModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Upload Slides</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                
+                <form action="/admin/slides" id="slidesUploader" class="dropzone">
+                    <div class="fallback">
+                        <input name="file" type="file" multiple />
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">                
+                <button type="button" class="btn btn-secondary" onclick="clearUploadForm()" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="announcementModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Make Announcement</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                   <div class="col-sm">
+                    <label for="announcementTitle">
+                        Announcement Title
+                    </label>
+                    <input type="text" id="announcementTitle" class="form-control" placeholde="e.g. My Awesome Announcement">
+
+                   </div> 
+                   <div class="col-sm-3">
+                       <label for="anouncementTime">
+                           Duration (sec.)
+                       </label>
+                       <input type="number" class="form-control" id="duration" value="120">
+                   </div>
+                </div>
+                    <br>
+                    <div id="announcementEditor"></div>                        
+            </div>
+            <div class="modal-footer">                                
+                <button type="button" class="btn btn-primary" onclick="makeAnnouncement()" data-dismiss="modal">Make Announcement</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/draggable.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/sortable.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js" integrity="sha256-cs4thShDfjkqFGk5s2Lxj35sgSRr4MRcyccmi0WKqCM=" crossorigin="anonymous"></script>        
+    <script src="/admin/js/tinymce/tinymce.min.js"></script>
+    <script src="/admin/js/app.js"></script>
+</body>
+</html>

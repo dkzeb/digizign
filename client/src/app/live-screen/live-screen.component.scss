@@ -1,0 +1,165 @@
+
+/* Header Specifics */
+
+.header {
+    height: 8vh;
+    max-height: 8vh;
+    width: 100vw;
+    background: white;
+    margin-top: 0px;
+    padding-top: 0px;
+    display: flex;
+}
+
+.header .brand-logo {
+    line-height: 8vh;
+    width: 25%;
+    padding-left: 1vh;    
+    justify-content: center;
+    flex-direction: column;
+}
+
+.header .brand-logo-image {
+    height: 8vh;    
+    width: auto;
+    z-index: 5500;
+}
+
+.filler {
+    display: flex;
+    width: 25%;
+}
+
+.header .maintitle {
+    text-align: center;
+    flex-grow: 1;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+
+    font-size: 3em;
+}
+
+.mainscreen {
+    height: 84vh;
+    width: 100vw;
+    max-height: 90vh;
+    background: url('https://auhack.org/img/WebBanner.jpg');
+    background-size: cover;
+    background-position: center center;
+}
+
+/* Footer Specifics */
+
+.footer {
+    height: 8vh;
+    max-height: 8vh;
+    width: 100vw;
+    background: white;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+}
+
+.footer .clock {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: right;
+    font-size: 2em;
+    padding-right: 1vh;
+}
+
+.footer .tags-container {
+    flex-grow: 1;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: left;
+    padding-left: 1vh;
+    font-size: 2em;
+}
+
+.tags {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;    
+}
+
+.footer .tag-image {
+    height: 4vh;    
+    width: auto;
+}
+
+.footer .tag {
+    display: flex;    
+    padding-right: 3vh;
+}
+
+.twitter-display-case {
+    width: 50vw;    
+    height: 40vh;
+  
+    background: white;
+    
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2vw;
+    font-size: 2em;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 13px 4px rgba(0,0,0,0.5);
+    overflow: hidden;
+}
+
+.twitter-display-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 2vh;
+}
+
+.twitter-divider {
+    border: thin solid lightgrey;
+}
+
+.twitter-display-text {
+    margin-top: 2vh;
+}
+
+.twitter-screen-name {
+    color: grey;
+}
+
+.twitter-title-image {
+    float: left;
+}
+
+.twitter-title-text {
+    float: left;
+    vertical-align: middle;    
+}
+
+.twitter-stats {
+    position: absolute;
+    bottom: 2vh;
+    right: 4vh;
+    color: grey;
+}
+
+.twitter-logo {
+    font-size: 15em;
+    color: rgba(0,0,0,0.03);
+    position: absolute;    
+    right: 0px;
+    z-index: -10;
+}
