@@ -9,15 +9,16 @@
 * YouTube LiveStream - display youtube livestreams on clients
 * Client Control - control your clients via the backend API e.g. reload all clients and so on
 * Socket.io implementation means that client autoconnect if connection to server is lost
-* Built with NodeJS, TypeScript, Express and Socket.io
+* Built with NodeJS, Angular 7, TypeScript, Express and Socket.io
 
 ### Getting Started ###
 
 * Clone the repo
-* Run `npm install`
+* Run `npm install` in both client and server directories
 * Build the application using gulp (`gulp build`)
 * Setup your config files
 * Run the app
+* (Optional) Deploy to a server, download the RPI images, point RPI's to server, enjoy!
 
 ### Prebuilt Raspberry Pi Images ###
 Big thanks to the guys at TOLDO TECHNIK who provided the project with prebuilt RPI images from their awesome version of buildroot-wpe
