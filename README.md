@@ -1,6 +1,5 @@
-# DigiZign #
+![Alt text](/storage/digizign-logo.png?raw=true "DigiZign")
 
-Digital Signage application for events.
 
 ### Features ###
 
